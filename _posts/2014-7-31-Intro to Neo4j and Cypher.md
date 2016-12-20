@@ -134,6 +134,7 @@ reduce(Profit=0, r in nodes(p) | Profit + r.value) AS TotalProfit
 ORDER BY TotalProfit DESC, TotalDistance ASC
 LIMIT 1
 ```
+
 The database responds that I should drive from City1, to City3, to City6, to City4. I will drive 65 miles and earn 465 dollars, in total.
 
 In the real world you would probably need a much more complicated system, but I hope this contrived example gives some perspective on how powerful basic queries can be.
