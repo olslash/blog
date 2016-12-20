@@ -111,6 +111,7 @@ Here's some setup code (full data on [github](https://github.com/olslash/cypher-
            ... 
 
 To find a path that will generate the most profit with the least driven distance, I can use the following query:
+
 ```
 // match the starting city
 MATCH (start {name:"City1"})
