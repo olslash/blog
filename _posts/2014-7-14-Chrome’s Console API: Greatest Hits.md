@@ -52,7 +52,7 @@ The big issue with this one is that it prints to the console on *every invocatio
 
 By default, Chrome’s console.log() method hides a lot of useful information, especially within objects, arrays, functions and regular expressions. console.dir() lets you inspect those types with a lot more depth than .log(). Here’s a basic example to demonstrate:
 
-{<1>}![](/content/images/2014/Jul/image_0.png)
+![](../images/image_0.png)
 
 ### Caveat warning:
 
@@ -62,7 +62,7 @@ console.dir() has some unexpected behavior that you should definitely be aware o
 
 The sister methods .debug(), .log, .info(), .warn() and .error() all do basically the same thing. Each represents a severity level for a message (ascending in the order I listed), and Chrome will let you filter to show only the level chosen. (On a Mac, hold cmd to select more than one.)
 
-{<2>}![](/content/images/2014/Jul/image_1.png)
+![](../images/image_1.png)
 
 None of this is new, but what may not be obvious (and wasn't, to me) is that each of the messaging methods has a couple helpful ways of formatting your output. The following examples use console.log(), but all of the methods in this group act in the same way.
 
@@ -100,7 +100,7 @@ For example:
 
 results in:
 
-{<3>}![image alt text](/content/images/2014/Jul/image_2.png)
+![image alt text](../images/image_2.png)
 
 Here, %d and %O are 'format specifiers' representing references to a number and an object stored in someVal and someObj, respectively. I won’t go into depth on the different specifiers, but a quick tip is to always use %O for objects, arrays, functions and regular expressions to get a complete picture of what’s hidden inside them. If you’re interested, [Google’s excellent resource](https://developer.chrome.com/devtools/docs/console#string-substitution-and-formatting) on the topic lists all the format specifiers you can use. 
 
@@ -112,7 +112,7 @@ Just like with console.dir(), log formatting has some unexpected behavior that y
 
 The console’s grouping methods help keep all the stuff you're writing to the console organized. group() and groupEnd() mark the start and end points for a collapsible ‘tree’ of log messages. Any messages that are logged between group() and groupEnd() will show up in the same branch of the tree.
 
-{<4>}![image alt text](/content/images/2014/Jul/image_3.png)
+![image alt text](../images/image_3.png)
 
 groupCollapsed() works the same way as group(), but its branch is initially collapsed, while group()'s is initially open.
 
@@ -140,7 +140,7 @@ Tables are a flashy way to view and filter a subset of the data stored in arrays
 
 results in the following list, which can be sorted by any of the columns:
 
-{<5>}![image alt text](/content/images/2014/Jul/image_4.png)
+![image alt text](../images/image_4.png)
 
 ## Trace
 
@@ -177,11 +177,11 @@ When displayed in this format, the value’s representation will *change* if the
 
 This behavior extends to any place the console uses a dropdown representation, even if some data is already displayed, as shown in these examples:
 
-{<6>}![image alt text](/content/images/2014/Jul/image_5.png)
+![image alt text](../images/image_5.png)
 
 *Here I console.dir() an object to to the screen, then before expanding the tree I change one of the object’s properties. Expanding the tree reflects val1’s new value, not the one it had when it was logged.*
 
-{<7>}![image alt text](/content/images/2014/Jul/image_6.png)
+![image alt text](../images/image_6.png)
 
 *In this example, I use console.log() to show an object with many properties, then change one of the object’s properties before expanding the tree. Notice how val2 has a value of 2 on the first line, and a value of 14 on the third.*
 
