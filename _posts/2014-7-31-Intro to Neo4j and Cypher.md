@@ -112,27 +112,27 @@ Here's some setup code (full data on [github](https://github.com/olslash/cypher-
 
 To find a path that will generate the most profit with the least driven distance, I can use the following query:
 ```
-    // match the starting city
-    MATCH (start {name:"City1"})
+// match the starting city
+MATCH (start {name:"City1"})
 
-    // match possible paths outward
-    MATCH p=(start)-[:ROAD*0..5]->()
+// match possible paths outward
+MATCH p=(start)-[:ROAD*0..5]->()
 
-    // filter for unique nodes only
-    WHERE ALL(n in nodes(p) WHERE 1=length(filter(m in nodes(p) WHERE m=n)))
+// filter for unique nodes only
+WHERE ALL(n in nodes(p) WHERE 1=length(filter(m in nodes(p) WHERE m=n)))
 
-    // filter for paths with four cities
-    AND length(nodes(p)) = 4
+// filter for paths with four cities
+AND length(nodes(p)) = 4
 
-    RETURN p AS bestPath,
+RETURN p AS bestPath,
 
-    // Sum total distance and total profit on each route
-    reduce(Distance=0, r in relationships(p) | Distance + r.dist) AS TotalDistance,
-    reduce(Profit=0, r in nodes(p) | Profit + r.value) AS TotalProfit
+// Sum total distance and total profit on each route
+reduce(Distance=0, r in relationships(p) | Distance + r.dist) AS TotalDistance,
+reduce(Profit=0, r in nodes(p) | Profit + r.value) AS TotalProfit
 
-    // maximize total profit and minimize distance
-    ORDER BY TotalProfit DESC, TotalDistance ASC
-    LIMIT 1
+// maximize total profit and minimize distance
+ORDER BY TotalProfit DESC, TotalDistance ASC
+LIMIT 1
 ```
 The database responds that I should drive from City1, to City3, to City6, to City4. I will drive 65 miles and earn 465 dollars, in total.
 
