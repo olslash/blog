@@ -152,7 +152,7 @@ and
 I wrote a [bash script](https://github.com/olslash/bag/blob/master/script/refresh-lambda-scripts.sh) and associated [config file](https://github.com/olslash/bag/blob/master/script/lambda_management_config.conf) to make it easy to generate the jar and upload it to AWS in one step. If we were to add more lambda functions to the namespace, the script would use the same jar for each one, just specifying a different handler function.
 
 #### Note: Keeping the bundle size down
-Because Lambda has a max size for uploaded code, we want to avoid including the entire AWS Java SDK, but the Amazonica depdency makes that happen by default. To avoid it, explicitly include the pieces of SDK you need:
+Because Lambda has a max size for uploaded code, we want to avoid including the entire AWS Java SDK, but the Amazonica depdency makes that happen by default. To avoid it, exclude the java SDK from amazonica, then explicitly include the pieces you need as separate deps:
 
 ```clojure
 [amazonica "0.3.77" :exclusions [com.amazonaws/aws-java-sdk
