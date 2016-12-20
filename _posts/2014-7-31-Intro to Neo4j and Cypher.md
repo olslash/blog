@@ -1,15 +1,15 @@
 This is a quick intro to the Neo4j graph database and its Cypher query language, based on a talk I gave at Hack Reactor a few days ago. By the end of this post, you'll have a general idea of how to read Cypher, you'll have a starting point for going through other tutorials, and most importantly I hope you'll be excited about the possibilities Neo4j can open up in your own projects.
 
-####What is a graph database? ####
+#### What is a graph database?
 In the simplest terms, a graph database represents data in terms of a [graph data structure](http://en.wikipedia.org/wiki/Graph_%28abstract_data_type%29), with *nodes* that represent nouns, and *edges* representing connections between those nouns. If you were creating a social network, users, groups, posts, tags, images, reviews, and comments might all be nodes in your database. Edges would connect these nodes in meaningful ways – users connected to their friends, to the posts they write, and to the groups they're members of.
 
-####What is Neo4j?####
+#### What is Neo4j?
 Here's the official word: 
 >"Neo4j is a highly scalable, robust (fully ACID) native graph database. Neo4j is used in mission-critical apps by thousands of leading startups, enterprises, and governments around the world."
 
 In my experience Neo4j has good documentation and is fairly easy to use in real projects. Working with it tends to be intuitive, and I've actually found it to be pretty fun.
 
-####Cypher####
+#### Cypher
 [Cypher](http://docs.neo4j.org/chunked/stable/cypher-query-lang.html) is the query language used by Neo4j. It's a declarative language that feels a lot like SQL.
 
 Let's jump right in.
@@ -50,7 +50,7 @@ Now Mitch knows Jared.
 
 At this point, you know enough to start the [official tutorials](http://docs.neo4j.org/chunked/stable/tutorials-cypher.html) with good context. For the rest of this post, I'm going to focus on the "get excited" part, by showing the power of Neo4j in some (still fairly basic) examples.
 
-####Example – Social Network####
+#### Example – Social Network
 In Mitch's social network, there are many users who follow each other. When a user or a relationship is created, it is cemented in the database as we did above:
 
     // Create some sample users
@@ -95,7 +95,7 @@ Graph databases are especially good at finding "friend of friend" relationships.
     WHERE NOT (me)-[:FOLLOWS]->(friendOfFriend)
     RETURN Distinct friendOfFriend
 
-####Example – Traveling Salesman####
+#### Example – Traveling Salesman
 I operate a mobile business. I need to find optimal paths through different cities, based on total distance driven and potential profit.
 
 Here's some setup code (full data on [github](https://github.com/olslash/cypher-queries/blob/master/traveling.cql)) that will create some cities, some roads between them, and my potential profit at each point.
