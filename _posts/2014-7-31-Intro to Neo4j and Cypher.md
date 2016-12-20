@@ -111,7 +111,7 @@ Here's some setup code (full data on [github](https://github.com/olslash/cypher-
            ... 
 
 To find a path that will generate the most profit with the least driven distance, I can use the following query:
-
+```
     // match the starting city
     MATCH (start {name:"City1"})
 
@@ -133,7 +133,7 @@ To find a path that will generate the most profit with the least driven distance
     // maximize total profit and minimize distance
     ORDER BY TotalProfit DESC, TotalDistance ASC
     LIMIT 1
-
+```
 The database responds that I should drive from City1, to City3, to City6, to City4. I will drive 65 miles and earn 465 dollars, in total.
 
 In the real world you would probably need a much more complicated system, but I hope this contrived example gives some perspective on how powerful basic queries can be.
