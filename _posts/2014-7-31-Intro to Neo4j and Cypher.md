@@ -55,7 +55,8 @@ In Mitch's social network, there are many users who follow each other. When a us
 
     // Create some sample users
     CREATE (mitch:PERSON {name: "Mitch"}),
-    (david:PERSON {name: "David"}),          	    (jc:PERSON {name: "Joel Cox"}),
+    (david:PERSON {name: "David"}),          	    
+    (jc:PERSON {name: "Joel Cox"}),
     (jared:PERSON {name: "Jared"}),
            ...
     // Create some sample relationships       
@@ -72,7 +73,7 @@ It's simple to find everyone I'm following:
     MATCH (me)-[:FOLLOWS]->(other)
     RETURN other
     
-Neo4j respones with each node matched as 'other', and any properties on those nodes:
+Neo4j responds with each node matched as 'other', and any properties on those nodes:
 >* {"name": "Jared"}
 * {"name": "John"}
 * {"name": "Will"}
