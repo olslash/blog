@@ -16,7 +16,8 @@ The first piece of code abstracts away the stream details and runs the actual ha
           [clojure.java.io :as io])
 
 (defn lambda-handler [in out ctx handler-fn]
-  (let [event (json/parse-stream (io/reader in) true) ; `true` keywordizes object keys.
+  ;; `true` keywordizes object keys.
+  (let [event (json/parse-stream (io/reader in) true) 
         res   @(handler-fn event ctx)]
     (with-open [w (io/writer out)]
       (json/generate-stream res w))))
