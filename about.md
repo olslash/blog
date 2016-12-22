@@ -4,8 +4,9 @@ title: About
 permalink: /about/
 ---
 
-Hi
+## My Resume
+https://olslash.github.io/
 
-### Contact me
+## Contact me
 
 [olordhux@gmail.com](mailto:olordhux@gmail.com)
