@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 ## My Resume
-https://olslash.github.io/
+[https://olslash.github.io/](https://olslash.github.io/)
 
 ## Contact me
 
