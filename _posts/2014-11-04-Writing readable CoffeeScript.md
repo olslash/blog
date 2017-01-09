@@ -5,7 +5,7 @@ Hello! At the time this article was written, CoffeeScript was a great alternativ
 In the past couple months, I've started to writing most of my JavaScript code in CoffeeScript. CoffeeScript is easier to write than JS because it's less verbose and it gives you tools to be more concise, but sometimes the language's focus on brevity makes reading it more difficult. For that reason I'd like to lay out some readability-aiding patterns and practices that I've found useful, with the hope of helping other devs write more clear and maintainable code.
 
 
-###Don't omit parentheses just because you can
+### Don't omit parentheses just because you can
 Here's a straightforward example from a codebase I worked on (with names changed).
 ```coffeescript
 	queue.push db.doSomeAction user.id, req.params.arg1, req.params.arg2
@@ -16,14 +16,14 @@ I certainly didn't notice the missing comma between `db.doSomeAction` and `user.
 ```
 Notice I didn't add parenthesis for the call to `queue.push`. There, the parens would add clutter without aiding meaning, so omission is preferred.
 
-###Implicit return can be too clever
+### Implicit return can be too clever
 
 CoffeeScript automatically returns the last statement in a function for you, but being explicit aids readability, especially for JS developers who aren't used to that pattern. If I'm writing a function with the goal of using its return value, I will generally write out the `return`. Coming back to my code later, I've found it easier to understand what my intentions were, especially with more complicated methods where the value returned is the direct result of some inner function call.
 
-###@ notation isn't right for every situation
+### @ notation isn't right for every situation
 CoffeeScript aliases `this` to `@`, giving a Ruby-like syntax for property and method access. I love it for accessing methods and instance properties, but if you need to pass 'this' as an argument, you should type it out. `doSomething(@)` just doesn't read, nor does `return @`.
 
-###Write functions that take named parameters
+### Write functions that take named parameters
 You see a lot of method calls in CoffeeScript (and JavaScript) that look like this:
 ```coffeescript
 	person.eat 'applesauce', 'spoon', true, 100, true, -> ...etc...
@@ -49,7 +49,7 @@ One important thing to be aware of is that if *all* of the named parameters are 
 ```coffeescript
 	person.walk = (location, {speed, shoes, route} = {}) ->
 ```  
-###Set instance variables directly in the arguments list
+### Set instance variables directly in the arguments list
 CoffeeScript has a nice syntax for setting instance variables that are passed as arguments:
 ```coffeescript
     constructor: (@type, {@size, x, y}) ->
@@ -60,7 +60,7 @@ CoffeeScript has a nice syntax for setting instance variables that are passed as
 ```              
 This is a nice way to avoid some boilerplate when you want to set the value of some argument as a property of the instance.
 
-###Use optional chaining to avoid boilerplate undefined-checking
+### Use optional chaining to avoid boilerplate undefined-checking
 
 When accessing properties that might not exist deep in an object, we're used to checking that each level is there, one by one, to avoid a TypeError.
 ```coffeescript
