@@ -7,10 +7,12 @@ In the past couple months, I've started to writing most of my JavaScript code in
 
 ### Don't omit parentheses just because you can
 Here's a straightforward example from a codebase I worked on (with names changed).
+
 ```coffeescript
 	queue.push db.doSomeAction user.id, req.params.arg1, req.params.arg2
 ```
 I certainly didn't notice the missing comma between `db.doSomeAction` and `user.id` the first time I saw code like this floating around, but the difference is huge. Adding parenthesis makes it clear that we're pushing *the return value of the function db.doSomeAction* into the queue:
+
 ```coffeescript
 	queue.push db.doSomeAction(user.id, req.params.arg1, req.params.arg2)
 ```
@@ -25,14 +27,17 @@ CoffeeScript aliases `this` to `@`, giving a Ruby-like syntax for property and m
 
 ### Write functions that take named parameters
 You see a lot of method calls in CoffeeScript (and JavaScript) that look like this:
+
 ```coffeescript
 	person.eat 'applesauce', 'spoon', true, 100, true, -> ...etc...
 ```
 It's easy to guess at what the arguments are doing for the first two, but what about the rest? Named parameters fix this. With a little adjustment to the definition, CoffeeScript will let you call that same method like this:
+
 ```coffeescript
     person.eat 'applesauce', with: 'spoon', warm: 'true', duration: 80, washBowl: true, finished: -> ...etc...
 ```
 Way more readable. Here's how to write the definition:
+
 ```coffeescript
 	person.eat = (dish, {with, warm, duration, washBowl, finished}) ->
       # CoffeeScript takes care of variable binding:
@@ -40,17 +45,20 @@ Way more readable. Here's how to write the definition:
       finished()
 ```    
 Sometimes it helps to name parameters differently for external and internal access. In the example above, the `with` parameter name reads well in the call, but not when it's used inside the method itself. You can fix that like this:
+
 ```coffeescript
 	person.eat = (dish, {with: utensil, warm, duration, washBowl, finished}) ->
       # now you pass the parameter using 'with' like before, and use it as 'utensil':
       console.log "eating #{dish} with #{utensil} for #{duration}"
 ```
 One important thing to be aware of is that if *all* of the named parameters are left out of a call, the method will throw an error. The fix, if you want to make all your named parameters optional, is to provide a default value:
+
 ```coffeescript
 	person.walk = (location, {speed, shoes, route} = {}) ->
 ```  
 ### Set instance variables directly in the arguments list
 CoffeeScript has a nice syntax for setting instance variables that are passed as arguments:
+
 ```coffeescript
     constructor: (@type, {@size, x, y}) ->
       # now there's no need to write: 
@@ -63,11 +71,13 @@ This is a nice way to avoid some boilerplate when you want to set the value of s
 ### Use optional chaining to avoid boilerplate undefined-checking
 
 When accessing properties that might not exist deep in an object, we're used to checking that each level is there, one by one, to avoid a TypeError.
+
 ```coffeescript
 	if result and result.bike and result.bike.wheels
 	    tires = result.bike.wheels.tires
 ```
 CoffeeScript lets us do this instead:
+
 ```coffeescript
 	tires = result.bike?.wheels?.tires
  ```
