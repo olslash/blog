@@ -56,6 +56,7 @@ One important thing to be aware of is that if *all* of the named parameters are 
 ```coffeescript
   person.walk = (location, {speed, shoes, route} = {}) ->
 ```  
+
 ### Set instance variables directly in the arguments list
 CoffeeScript has a nice syntax for setting instance variables that are passed as arguments:
 
