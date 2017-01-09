@@ -81,4 +81,4 @@ CoffeeScript lets us do this instead:
 
 ```coffeescript
   tires = result.bike?.wheels?.tires
- ```
+```
